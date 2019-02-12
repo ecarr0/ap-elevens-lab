@@ -1,0 +1,143 @@
+Activity 2 Questions:
+
+1. A deck is an object that is a collection of card objects (an arraylist of card objects).
+
+2. There will be 6 cards in the deck.
+
+3. String[] ranks = {"2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"};
+   String[] suits = {"Hearts", "Spades", "Diamonds", "Clovers"};
+   int[] values = {2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10, 11};
+
+4. The order of the suits array does not matter, however, the indexes of ranks should correspond with the indexes
+of their values in the values array.
+
+Activity 3 Questions:
+
+1. 
+import java.util.Random;
+
+public static String flip(){
+     Random r = new Random();
+     if(r.nextInt(2) < 2){
+          return "heads";
+     }
+     else{
+          return "tails";
+     }	
+}
+
+2. 
+public static boolean arePermutations(int[] array1, int[] array2){
+	boolean yay = false;
+	for(int i = 0; i < array1.length; i++){
+		for(int j = 0; j < array1.length; j++){
+			if(array1[i] == array2[j]){
+				yay = true;
+			}
+		}
+		if(!yay){
+			return false;
+		}
+		yay = false;
+	}
+	return true;
+}
+
+3. 0110
+
+Activity 5:
+
+Buggy 1:
+Constructor/Method: isEmpty() 
+Problem: Size is not being actively updated
+
+Buggy 2:
+Constructor/Method: Deck()
+Problem: Size is not set in the constructor as the length of the array.
+
+Buggy 3:
+Constructor/Method: shuffle()
+Problem: efficient selection shuffle is not shuffling the cards correctly.
+
+Buggy 4: 
+Constructor/Method: deal() / isEmpty()
+Problem: Since the size is not being actively update (size is set as 0),
+isEmpty() returns true and deal() returns null.
+
+Buggy 5:
+Constructor/Method: shuffle() / Deck()
+Problem: Since the size isn't set correctly in the constructor, size is 0. 
+Thus, the loop in shuffle starts at cards.size() - 1, or 0 - 1, which is -1, an
+invalid index.
+
+Activity 6:
+
+1. 5S + 6C, 6C + 5C, 
+
+2. They must be J, Q, and K. This is because numerical cards can only be removed 
+in pairs (so out of 3 cards, one would always remain). The only way to remove 3
+cards in one move is they are some permutation of J, Q, and K.
+
+3. There is strategy in terms of selecting which cards to remove (numerical vs face
+cards). If more than one play is possible, between removing a trio of face cards 
+and a numerical pair, one should remove the face cards first to introduce more 
+possibilities of pairs for the remaining numerical cards. 
+
+Activity 7:
+
+1. A flat surface/table, a deck of cards, a way to keep track of moves.
+
+2.  Set up a random array of 9 cards. Allow the cards to be selectable. If a card
+is selected, highlight it a different color. If two cards are selected and the 
+replace button is selected, check if both card values add up to 11. If so, replace
+those two cards with two cards selected from the deck and add one to the counter. 
+If at any point none of the face-up cards add to 11, the player loses. The only 
+selectable button should be restart. If at any point the deck is completely dealt
+and there are no face up cards, the player wins. Only restart can be selected.
+If at any point, restart is selected, remove all cards / decks, create a new deck 
+and cards, and start from the beginning.
+
+3. Yes?
+
+4. a)It is called in the ElevensBoard constructor
+   b) isLegal() and anotherPlayIsPossible()
+   c) JH, 6S, 2S, AS, 4H
+   d) 
+	public static printCards(ElevensBoard board) {
+		List<Integer> cIndexes = board.cardIndexes();
+
+		for(int i = 0; i < cIndexes.size(); i++){
+			System.out.println("Card at " + i + " is " + cIndexes.get(i));
+		}	
+	}
+   e)isLegal()? Because it must know the indexes of the highlighted cards to check 
+     if the values of those cards contain the 11 or JQK that we are looking for.
+
+Activity 8:
+
+1. Elevens, Thirteens, and Tens all involve cards and decks, as well as summations
+of numerical cards (and for some, face cards) to equal the value of the namesake.
+Face cards are given special conditions for removal, and the game is started with
+cards faceup. The deck is used for replacement and the game is won when the deck
+and board are empty.
+
+2. The instance variables in the Board instance get initialized in the constructor
+using getter and setter methods to retrieve information from the ElevensBoard.
+
+3. Most of them do, except for isLegal() and anotherPlayIsPossible()? This is 
+because these two methods operate on different rules depending on the game 
+used. The rest of them do because they are all methods that are unified no matter
+what game is played.
+
+Activity 9:
+
+1. size is not an abstract method because it isn't common across elevens and thirteens?
+
+2. This is because the rules regarding which cards to remove or replace differ 
+across the different variations of the game?
+
+3. No, as these methods differ across the different games. Since the different games
+allow different numbers of cards to be paired together for removal (4, 3, or 2),
+it would not be a good idea to make these methods abstract. The Board class design
+works better as the methods within it are all methods applicable across the different
+games.

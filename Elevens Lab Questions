@@ -1,0 +1,71 @@
+Activity 2 Questions:
+
+1. A deck is an object that is a collection of card objects (an arraylist of card objects).
+
+2. There will be 6 cards in the deck.
+
+3. String[] ranks = {"2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"};
+   String[] suits = {"Hearts", "Spades", "Diamonds", "Clovers"};
+   int[] values = {2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10, 11};
+
+4. The order of the suits array does not matter, however, the indexes of ranks should correspond with the indexes
+of their values in the values array.
+
+Activity 3 Questions:
+
+1. 
+import java.util.Random;
+
+public static String flip(){
+     Random r = new Random();
+     if(r.nextInt(2) < 2){
+          return "heads";
+     }
+     else{
+          return "tails";
+     }	
+}
+
+2. 
+public static boolean arePermutations(int[] array1, int[] array2){
+	boolean yay = false;
+	for(int i = 0; i < array1.length; i++){
+		for(int j = 0; j < array1.length; j++){
+			if(array1[i] == array2[j]){
+				yay = true;
+			}
+		}
+		if(!yay){
+			return false;
+		}
+		yay = false;
+	}
+	return true;
+}
+
+3. 0110
+
+Activity 5:
+
+Buggy 1:
+Constructor/Method: isEmpty() 
+Problem: Size is not being actively updated
+
+Buggy 2:
+Constructor/Method: Deck()
+Problem: Size is not set in the constructor as the length of the array.
+
+Buggy 3:
+Constructor/Method: shuffle()
+Problem: efficient selection shuffle is not shuffling the cards correctly.
+
+Buggy 4: 
+Constructor/Method: deal() / isEmpty()
+Problem: Since the size is not being actively update (size is set as 0),
+isEmpty() returns true and deal() returns null.
+
+Buggy 5:
+Constructor/Method: shuffle() / Deck()
+Problem: Since the size isn't set correctly in the constructor, size is 0. 
+Thus, the loop in shuffle starts at cards.size() - 1, or 0 - 1, which is -1, an
+invalid index.

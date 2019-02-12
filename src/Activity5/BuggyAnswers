@@ -1,0 +1,22 @@
+Buggy 1:
+Constructor/Method: isEmpty() 
+Problem: Size is not being actively updated
+
+Buggy 2:
+Constructor/Method: Deck()
+Problem: Size is not set in the constructor as the length of the array.
+
+Buggy 3:
+Constructor/Method: shuffle()
+Problem: efficient selection shuffle is not shuffling the cards correctly.
+
+Buggy 4: 
+Constructor/Method: deal() / isEmpty()
+Problem: Since the size is not being actively update (size is set as 0),
+isEmpty() returns true and deal() returns null.
+
+Buggy 5:
+Constructor/Method: shuffle() / Deck()
+Problem: Since the size isn't set correctly in the constructor, size is 0. 
+Thus, the loop in shuffle starts at cards.size() - 1, or 0 - 1, which is -1, an
+invalid index.
