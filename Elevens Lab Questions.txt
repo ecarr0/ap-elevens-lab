@@ -121,8 +121,7 @@ Face cards are given special conditions for removal, and the game is started wit
 cards faceup. The deck is used for replacement and the game is won when the deck
 and board are empty.
 
-2. The instance variables in the Board instance get initialized in the constructor
-using getter and setter methods to retrieve information from the ElevensBoard.
+2. Super calls the constructor from the Board class.
 
 3. Most of them do, except for isLegal() and anotherPlayIsPossible()? This is 
 because these two methods operate on different rules depending on the game 
